@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1,minimum-scale=1.0,maximum-scale=1,user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta content="telephone=no" name="format-detection" />
+<title>M选N效果</title>
+
+<script type="text/javascript" src="http://cdn.staticfile.org/jquery/3.4.1/jquery.min.js"></script>
+</head>
+
+<style>
+    .box{
+        border: 1px solid;
+        margin-right: 10px;
+        width: 200px;
+        height: 200px;
+    }
+
+    .sel{
+        background: red;
+    }
+	
+	.fl{ float:left;}
+
+    .clear{
+        clear: both;
+    }
+</style>
+
+<script>
+    var preset_sel_count = [3,5,12];
+
+</script>
+
+<script>
+    $(function () {
+        $('.box').click(function () {
+
+            //选中当前
+            $(this).toggleClass('sel');
+
+            //计算已选中总数
+            curr_sel_count = $('.sel').length;
+
+            //判断已选中总数是否在预设数组中
+            for (var i = 0; i < preset_sel_count.length; i++) {
+                var count = preset_sel_count[i];
+                if(curr_sel_count == count){
+                    $('#btn').show();
+                    return;
+                }
+            }
+
+            //没有匹配到预设值
+            $('#btn').hide();
+        })
+    })
+
+</script>
+
+<body>
+
+<div class="content" >
+
+    <div style="margin: 200px auto;width: 1000px;">
+        <div>
+            <div class="fl box"></div>
+            <div class="fl box"></div>
+            <div class="fl box"></div>
+            <div class="fl box"></div>
+            <div class="clear"></div>
+        </div>
+        <br>
+        <div>
+            <div class="fl box"></div>
+            <div class="fl box"></div>
+            <div class="fl box"></div>
+            <div class="fl box"></div>
+            <div class="clear"></div>
+        </div>
+        <br>
+        <div>
+            <div class="fl box"></div>
+            <div class="fl box"></div>
+            <div class="fl box"></div>
+            <div class="fl box"></div>
+            <div class="clear"></div>
+        </div>
+        <br>
+        <div>
+            <button id="btn"  style="width: 200px;display: none">按钮</button>
+        </div>
+    </div>
+
+    
+    
+    
+</div>
+
+</body>
+</html>
